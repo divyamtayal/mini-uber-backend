@@ -1,15 +1,48 @@
-version: '3.8'
-services:
-  postgres:
-    image: postgres:15
-    environment:
-      POSTGRES_USER: uber
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: miniuber
-    ports:
-      - "5432:5432"
+version: "3.8"
 
-  redis:
+services:
+  postgres-user:
+    image: postgres:15
+    container_name: postgres-user
+    environment:
+      POSTGRES_DB: userdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5433:5432"
+
+  postgres-ride:
+    image: postgres:15
+    container_name: postgres-ride
+    environment:
+      POSTGRES_DB: ridedb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5434:5432"
+
+  postgres-payment:
+    image: postgres:15
+    container_name: postgres-payment
+    environment:
+      POSTGRES_DB: paymentdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5435:5432"
+
+  postgres-driver:
+    image: postgres:15
+    container_name: postgres-driver
+    environment:
+      POSTGRES_DB: driverdb
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+    ports:
+      - "5436:5432"
+
+  redis-tracking:
     image: redis:7
+    container_name: redis-tracking
     ports:
       - "6379:6379"
