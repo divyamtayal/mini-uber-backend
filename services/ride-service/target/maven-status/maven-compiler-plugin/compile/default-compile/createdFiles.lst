@@ -1,2 +1,8 @@
+com/miniuber/ride/dto/RideRequestDTO.class
+com/miniuber/ride/repository/RideRepository.class
+com/miniuber/ride/service/RideServiceImpl.class
+com/miniuber/ride/controller/RideController.class
 com/miniuber/ride/RideServiceApplication.class
-com/miniuber/ride/RideController.class
+com/miniuber/ride/dto/RideResponseDTO.class
+com/miniuber/ride/service/RideService.class
+com/miniuber/ride/entity/Ride.class

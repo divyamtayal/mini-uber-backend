@@ -1,2 +1,8 @@
+/Users/divyamtayal/Documents/projects/mini-uber-backend/services/ride-service/src/main/java/com/miniuber/ride/dto/RideRequestDTO.java
+/Users/divyamtayal/Documents/projects/mini-uber-backend/services/ride-service/src/main/java/com/miniuber/ride/entity/Ride.java
 /Users/divyamtayal/Documents/projects/mini-uber-backend/services/ride-service/src/main/java/com/miniuber/ride/RideServiceApplication.java
-/Users/divyamtayal/Documents/projects/mini-uber-backend/services/ride-service/src/main/java/com/miniuber/ride/RideController.java
+/Users/divyamtayal/Documents/projects/mini-uber-backend/services/ride-service/src/main/java/com/miniuber/ride/dto/RideResponseDTO.java
+/Users/divyamtayal/Documents/projects/mini-uber-backend/services/ride-service/src/main/java/com/miniuber/ride/repository/RideRepository.java
+/Users/divyamtayal/Documents/projects/mini-uber-backend/services/ride-service/src/main/java/com/miniuber/ride/service/RideServiceImpl.java
+/Users/divyamtayal/Documents/projects/mini-uber-backend/services/ride-service/src/main/java/com/miniuber/ride/service/RideService.java
+/Users/divyamtayal/Documents/projects/mini-uber-backend/services/ride-service/src/main/java/com/miniuber/ride/controller/RideController.java
