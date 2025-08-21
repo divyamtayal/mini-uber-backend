@@ -1,2 +1,6 @@
+com/miniuber/tracking/controller/TrackingController.class
+com/miniuber/tracking/config/RedisConfig.class
+com/miniuber/tracking/service/TrackingService.class
+com/miniuber/tracking/dto/TrackingDTO.class
+com/miniuber/tracking/service/TrackingServiceImpl.class
 com/miniuber/tracking/TrackingServiceApplication.class
-com/miniuber/tracking/TrackingController.class
