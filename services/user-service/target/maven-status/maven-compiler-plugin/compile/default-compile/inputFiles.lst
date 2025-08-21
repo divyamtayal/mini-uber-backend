@@ -1,2 +1,5 @@
 /Users/divyamtayal/Documents/projects/mini-uber-backend/services/user-service/src/main/java/com/miniuber/user/UserServiceApplication.java
-/Users/divyamtayal/Documents/projects/mini-uber-backend/services/user-service/src/main/java/com/miniuber/user/UserController.java
+/Users/divyamtayal/Documents/projects/mini-uber-backend/services/user-service/src/main/java/com/miniuber/user/controller/UserController.java
+/Users/divyamtayal/Documents/projects/mini-uber-backend/services/user-service/src/main/java/com/miniuber/user/entity/User.java
+/Users/divyamtayal/Documents/projects/mini-uber-backend/services/user-service/src/main/java/com/miniuber/user/repository/UserRepository.java
+/Users/divyamtayal/Documents/projects/mini-uber-backend/services/user-service/src/main/java/com/miniuber/user/service/UserService.java

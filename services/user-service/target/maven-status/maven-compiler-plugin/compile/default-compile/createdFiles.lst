@@ -1,2 +1,5 @@
-com/miniuber/user/UserController.class
+com/miniuber/user/repository/UserRepository.class
+com/miniuber/user/entity/User.class
+com/miniuber/user/controller/UserController.class
+com/miniuber/user/service/UserService.class
 com/miniuber/user/UserServiceApplication.class

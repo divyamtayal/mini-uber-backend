@@ -4,3 +4,14 @@ server:
 spring:
   application:
     name: ride-service
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ridedb
+    username: user
+    password: pass
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

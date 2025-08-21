@@ -1,6 +1,14 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/userdb
+    username: user
+    password: pass
+  jpa:
+    hibernate:
+      ddl-auto: create-drop   # auto creates schema on startup
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
 server:
   port: 8081
-
-spring:
-  application:
-    name: user-service
