@@ -1,21 +1,14 @@
 package com.miniuber.driver.service;
 
 import com.miniuber.driver.entity.Driver;
-import com.miniuber.driver.repository.DriverRepository;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
-@Service
-public class DriverService {
-
-    private final DriverRepository driverRepository;
-
-    public DriverService(DriverRepository driverRepository) {
-        this.driverRepository = driverRepository;
-    }
-
-    public List<Driver> getAllDrivers() {
-        return driverRepository.findAll();
-    }
+public interface DriverService {
+    List<Driver> getAllDrivers();
+    Optional<Driver> getDriverById(Long id);
+    Driver createDriver(Driver driver);
+    Optional<Driver> updateDriver(Long id, Driver driver);
+    boolean deleteDriver(Long id);
 }

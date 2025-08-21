@@ -1,11 +1,9 @@
 package com.miniuber.driver.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "drivers")
 public class Driver {
 
     @Id
@@ -14,8 +12,17 @@ public class Driver {
 
     private String name;
     private String email;
+    private String vehicleNumber;
 
-    // Getters and setters
+    public Driver() {}
+
+    public Driver(String name, String email, String vehicleNumber) {
+        this.name = name;
+        this.email = email;
+        this.vehicleNumber = vehicleNumber;
+    }
+
+    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -24,4 +31,7 @@ public class Driver {
 
     public String getEmail() { return email; }
     public void setEmail(String email) { this.email = email; }
+
+    public String getVehicleNumber() { return vehicleNumber; }
+    public void setVehicleNumber(String vehicleNumber) { this.vehicleNumber = vehicleNumber; }
 }
