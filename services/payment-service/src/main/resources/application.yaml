@@ -4,7 +4,12 @@ server:
 spring:
   application:
     name: payment-service
-
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
+      register-with-eureka: true
+      fetch-registry: true
   datasource:
     url: jdbc:postgresql://localhost:5435/paymentdb
     username: user
