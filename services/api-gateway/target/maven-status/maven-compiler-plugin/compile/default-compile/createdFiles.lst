@@ -1,2 +1,5 @@
-com/miniuber/gateway/ApiGatewayApplication.class
+com/miniuber/gateway/security/GatewaySecurityConfig.class
+com/miniuber/gateway/security/JwtAuthFilter.class
 com/miniuber/gateway/ErrorHandler.class
+com/miniuber/gateway/util/DevJwtMaker.class
+com/miniuber/gateway/ApiGatewayApplication.class

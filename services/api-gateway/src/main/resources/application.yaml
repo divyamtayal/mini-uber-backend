@@ -8,6 +8,9 @@ spring:
     discovery:
       enabled: true
     gateway:
+      default-filters: # (optional) add response headers for debugging
+        - AddResponseHeader=X-From-Gateway, true
+
       # Optional: auto-create routes from serviceId (if you like /SERVICE-ID/** style)
       discovery:
         locator:
@@ -82,3 +85,11 @@ management:
   metrics:
     tags:
       application: api-gateway
+security:
+  jwt:
+    secret: MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDE=
+logging:
+  level:
+    root: INFO
+    com.miniuber.gateway: DEBUG
+    org.springframework.security: DEBUG
