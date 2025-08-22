@@ -1,5 +1,5 @@
 server:
-  port: 8087
+  port: 8086
 
 spring:
   application:
@@ -10,3 +10,11 @@ spring:
         defaultZone: http://localhost:8761/eureka/
       register-with-eureka: true
       fetch-registry: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      show-details: always
