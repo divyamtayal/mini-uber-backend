@@ -1,2 +1,5 @@
+com/miniuber/notification/dto/NotificationDTO.class
+com/miniuber/notification/service/NotificationService.class
 com/miniuber/notification/NotificationServiceApplication.class
-com/miniuber/notification/NotificationController.class
+com/miniuber/notification/service/NotificationServiceImpl.class
+com/miniuber/notification/controller/NotificationController.class
