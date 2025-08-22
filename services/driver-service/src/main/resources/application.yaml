@@ -1,4 +1,12 @@
 spring:
+  application:
+    name: driver-service           # change per service
+  eureka:
+    client:
+      service-url:
+        defaultZone: http://localhost:8761/eureka/
+      register-with-eureka: true
+      fetch-registry: true
   datasource:
     url: jdbc:postgresql://localhost:5436/driverdb
     username: user
