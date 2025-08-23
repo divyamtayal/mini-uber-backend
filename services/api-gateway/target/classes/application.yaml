@@ -9,12 +9,18 @@ spring:
       enabled: true
     gateway:
       default-filters: # (optional) add response headers for debugging
-        - AddResponseHeader=X-From-Gateway, true
-
+        - RemoveRequestHeader=Cookie
+        - DedupeResponseHeader=Access-Control-Allow-Origin Access-Control-Allow-Credentials
       # Optional: auto-create routes from serviceId (if you like /SERVICE-ID/** style)
       discovery:
         locator:
           enabled: false   # keep false since you're defining routes manually
+      httpclient:
+        # sensible timeouts
+        connect-timeout: 3000
+        response-timeout: 10s
+        pool:
+          type: ELASTIC
       routes:
         - id: user-service
           uri: lb://user-service
@@ -90,6 +96,5 @@ security:
     secret: MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDE=
 logging:
   level:
-    root: INFO
-    com.miniuber.gateway: DEBUG
-    org.springframework.security: DEBUG
+    org.springframework.cloud.gateway: INFO
+    reactor.netty.http.client: WARN
