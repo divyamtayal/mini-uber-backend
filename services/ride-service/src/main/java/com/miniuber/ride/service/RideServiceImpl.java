@@ -1,21 +1,30 @@
 package com.miniuber.ride.service;
+import com.miniuber.common.events.RideCompletedEvent;
+import com.miniuber.common.events.RideRequestedEvent;
+
 
 import com.miniuber.ride.dto.RideRequestDTO;
 import com.miniuber.ride.dto.RideResponseDTO;
 import com.miniuber.ride.entity.Ride;
 import com.miniuber.ride.repository.RideRepository;
+import com.miniuber.ride.messaging.RideEventsProducer;
 import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
+
+
 
 @Service
 public class RideServiceImpl implements RideService {
 
     private final RideRepository rideRepository;
 
-    public RideServiceImpl(RideRepository rideRepository) {
+    private final RideEventsProducer rideEventsProducer;
+
+    public RideServiceImpl(RideRepository rideRepository, RideEventsProducer rideEventsProducer) {
         this.rideRepository = rideRepository;
+        this.rideEventsProducer = rideEventsProducer;
     }
 
     @Override
@@ -28,6 +37,9 @@ public class RideServiceImpl implements RideService {
         ride.setStartTime(dto.getStartTime());
         ride.setStatus("REQUESTED");
         ride = rideRepository.save(ride);
+        rideEventsProducer.publishRideRequested(
+                new RideRequestedEvent(ride.getId(), ride.getUserId(), ride.getStartLocation(), ride.getEndLocation())
+        );
         return mapToResponse(ride);
     }
 
@@ -97,6 +109,9 @@ public class RideServiceImpl implements RideService {
         double fare = 50 + (ride.getDistanceKm() != null ? ride.getDistanceKm() * 10 : 0);
         ride.setFare(fare);
         rideRepository.save(ride);
+        rideEventsProducer.publishRideCompleted(
+                new RideCompletedEvent(ride.getId(), ride.getUserId(), ride.getDriverId(), ride.getFare())
+        );
         return mapToResponse(ride);
     }
 

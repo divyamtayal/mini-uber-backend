@@ -4,6 +4,15 @@ server:
 spring:
   application:
     name: matching-service
+  kafka:
+    bootstrap-servers: localhost:29092
+    consumer:
+      group-id: matching-service
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.miniuber.common.events"
+        spring.json.use.type.headers: true
   eureka:
     client:
       service-url:
