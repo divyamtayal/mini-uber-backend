@@ -1,6 +1,8 @@
 com/miniuber/matching/service/MatchingService.class
 com/miniuber/matching/entity/Match.class
 com/miniuber/matching/controller/MatchingController.class
+com/miniuber/matching/messaging/DriverEventsProducer.class
+com/miniuber/matching/config/KafkaConfig.class
 com/miniuber/matching/repository/MatchRepository.class
 com/miniuber/matching/dto/MatchRequestDTO.class
 com/miniuber/matching/MatchingServiceApplication.class

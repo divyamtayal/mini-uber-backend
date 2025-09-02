@@ -7,3 +7,5 @@ com/miniuber/ride/dto/RideResponseDTO.class
 com/miniuber/ride/service/RideService.class
 com/miniuber/ride/messaging/RideEventsProducer.class
 com/miniuber/ride/entity/Ride.class
+com/miniuber/ride/config/KafkaConfig.class
+com/miniuber/ride/messaging/DriverEventsListener.class

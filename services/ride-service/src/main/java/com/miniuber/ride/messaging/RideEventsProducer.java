@@ -16,10 +16,10 @@ public class RideEventsProducer {
 
     public void publishRideRequested(RideRequestedEvent event) {
         System.out.println("✅ Published RideRequestedEvent to Kafka");
-        kafkaTemplate.send("ride-requested-topic", event);
+        kafkaTemplate.send("ride-requested", event);
     }
 
     public void publishRideCompleted(RideCompletedEvent event) {
-        kafkaTemplate.send("ride-completed-topic", event);
+        kafkaTemplate.send("ride-completed", event);
     }
 }
