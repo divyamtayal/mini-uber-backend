@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: api-gateway
+  sleuth:
+    sampler:
+      probability: 1.0   # 100% trace all requests (default 10%)
+  zipkin:
+    base-url: http://localhost:9411
   cloud:
     discovery:
       enabled: true
@@ -18,7 +23,7 @@ spring:
       httpclient:
         # sensible timeouts
         connect-timeout: 3000
-        response-timeout: 10s
+        response-timeout: 5s
         pool:
           type: ELASTIC
       routes:
@@ -28,6 +33,10 @@ spring:
             - Path=/api/users/**
           filters:
             - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: userServiceCB
+                fallbackUri: forward:/fallback/users
 
         - id: driver-service
           uri: lb://driver-service
@@ -35,6 +44,10 @@ spring:
             - Path=/api/drivers/**
           filters:
             - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: driverServiceCB
+                fallbackUri: forward:/fallback/drivers
 
         - id: ride-service
           uri: lb://ride-service
@@ -42,6 +55,10 @@ spring:
             - Path=/api/rides/**
           filters:
             - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: rideServiceCB
+                fallbackUri: forward:/fallback/rides
 
         - id: payment-service
           uri: lb://payment-service
@@ -49,6 +66,10 @@ spring:
             - Path=/api/payments/**
           filters:
             - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: paymentServiceCB
+                fallbackUri: forward:/fallback/payments
 
         - id: tracking-service
           uri: lb://tracking-service
@@ -56,6 +77,10 @@ spring:
             - Path=/api/tracking/**
           filters:
             - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: trackingServiceCB
+                fallbackUri: forward:/fallback/tracking
 
         - id: matching-service
           uri: lb://matching-service
@@ -63,6 +88,10 @@ spring:
             - Path=/api/matching/**
           filters:
             - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: matchingServiceCB
+                fallbackUri: forward:/fallback/matching
 
         - id: notification-service
           uri: lb://notification-service
@@ -70,6 +99,10 @@ spring:
             - Path=/api/notifications/**
           filters:
             - StripPrefix=1
+            - name: CircuitBreaker
+              args:
+                name: notificationServiceCB
+                fallbackUri: forward:/fallback/notifications
 
 eureka:
   client:
@@ -81,6 +114,12 @@ eureka:
     prefer-ip-address: true
 
 management:
+  tracing:
+    sampling:
+      probability: 1.0   # trace 100% of requests
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
   endpoints:
     web:
       exposure:
@@ -98,3 +137,16 @@ logging:
   level:
     org.springframework.cloud.gateway: INFO
     reactor.netty.http.client: WARN
+resilience4j:
+  circuitbreaker:
+    instances:
+      userService:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        failureRateThreshold: 50
+        waitDurationInOpenState: 5s
+  timelimiter:
+    instances:
+      userService:
+        timeoutDuration: 3s

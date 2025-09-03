@@ -1,6 +1,11 @@
 spring:
   application:
     name: user-service           # change per service
+  sleuth:
+    sampler:
+      probability: 1.0   # 100% trace all requests (default 10%)
+  zipkin:
+    base-url: http://localhost:9411
   eureka:
     client:
       register-with-eureka: true
@@ -33,3 +38,9 @@ management:
   metrics:
     tags:
       application: user-service
+  tracing:
+    sampling:
+      probability: 1.0   # trace 100% of requests
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
