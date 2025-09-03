@@ -5,6 +5,7 @@ com/miniuber/payment/dto/PaymentRequestDTO.class
 com/miniuber/payment/PaymentServiceApplication.class
 com/miniuber/payment/repository/PaymentRepository.class
 com/miniuber/payment/entity/Payment.class
+com/miniuber/payment/messaging/PaymentEventsProducer.class
 com/miniuber/payment/messaging/RideEventsListener.class
 com/miniuber/payment/controller/PaymentController.class
 com/miniuber/payment/dto/PaymentResponseDTO.class

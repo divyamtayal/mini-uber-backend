@@ -2,6 +2,7 @@
 /Users/divyamtayal/Documents/projects/mini-uber-backend/services/payment-service/src/main/java/com/miniuber/payment/config/KafkaConfig.java
 /Users/divyamtayal/Documents/projects/mini-uber-backend/services/payment-service/src/main/java/com/miniuber/payment/dto/PaymentRequestDTO.java
 /Users/divyamtayal/Documents/projects/mini-uber-backend/services/payment-service/src/main/java/com/miniuber/payment/dto/PaymentResponseDTO.java
+/Users/divyamtayal/Documents/projects/mini-uber-backend/services/payment-service/src/main/java/com/miniuber/payment/messaging/PaymentEventsProducer.java
 /Users/divyamtayal/Documents/projects/mini-uber-backend/services/payment-service/src/main/java/com/miniuber/payment/repository/PaymentRepository.java
 /Users/divyamtayal/Documents/projects/mini-uber-backend/services/payment-service/src/main/java/com/miniuber/payment/controller/PaymentController.java
 /Users/divyamtayal/Documents/projects/mini-uber-backend/services/payment-service/src/main/java/com/miniuber/payment/entity/Payment.java

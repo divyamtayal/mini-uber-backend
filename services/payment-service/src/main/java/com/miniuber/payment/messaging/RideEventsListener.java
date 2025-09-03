@@ -1,6 +1,7 @@
 package com.miniuber.payment.messaging;
 
 import com.miniuber.common.events.RideCompletedEvent;
+import com.miniuber.common.events.PaymentCreatedEvent;
 import com.miniuber.payment.entity.Payment;
 import com.miniuber.payment.repository.PaymentRepository;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -11,9 +12,11 @@ import java.time.LocalDateTime;
 public class RideEventsListener {
 
     private final PaymentRepository paymentRepository;
+    private PaymentEventsProducer paymentEventsProducer;
 
-    public RideEventsListener(PaymentRepository paymentRepository) {
+    public RideEventsListener(PaymentRepository paymentRepository, PaymentEventsProducer paymentEventsProducer) {
         this.paymentRepository = paymentRepository;
+        this.paymentEventsProducer = paymentEventsProducer;
     }
 
     @KafkaListener(topics = "ride-completed", groupId = "payment-service-group")
@@ -32,5 +35,14 @@ public class RideEventsListener {
 
         System.out.println("✅ Payment record created for ride " + event.getRideId() +
                 " amount $" + event.getFare());
+        PaymentCreatedEvent evt = new PaymentCreatedEvent(
+                payment.getId(),
+                payment.getRideId(),
+                payment.getUserId(),
+                payment.getAmount(),
+                payment.getStatus()
+        );
+
+        paymentEventsProducer.publish(evt);
     }
 }
