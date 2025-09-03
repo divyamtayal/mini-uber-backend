@@ -110,7 +110,7 @@ public class RideServiceImpl implements RideService {
         ride.setFare(fare);
         rideRepository.save(ride);
         rideEventsProducer.publishRideCompleted(
-                new RideCompletedEvent(ride.getId(), ride.getUserId(), ride.getDriverId(), ride.getFare())
+                new RideCompletedEvent(ride.getId(), ride.getUserId(), ride.getDriverId(), ride.getFare(), ride.getEndTime())
         );
         return mapToResponse(ride);
     }
