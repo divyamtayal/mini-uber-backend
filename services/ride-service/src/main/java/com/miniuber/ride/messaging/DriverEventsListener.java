@@ -17,7 +17,7 @@ public class DriverEventsListener {
         this.rideRepository = rideRepository;
     }
 
-    @KafkaListener(topics = "driver-assigned-events", groupId = "ride-service-group")
+    @KafkaListener(topics = "driver-assigned", groupId = "ride-service-group")
     public void handleDriverAssigned(DriverAssignedEvent event) {
         System.out.println("📩 Ride-service received DriverAssignedEvent: " + event);
 

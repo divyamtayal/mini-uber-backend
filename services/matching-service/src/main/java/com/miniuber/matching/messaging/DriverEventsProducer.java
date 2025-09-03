@@ -14,7 +14,7 @@ public class DriverEventsProducer {
     }
 
     public void publish(DriverAssignedEvent event) {
-        kafkaTemplate.send("driver-assigned-events", event);
+        kafkaTemplate.send("driver-assigned", event);
         System.out.println("✅ Published DriverAssignedEvent: " + event);
     }
 }

@@ -1,7 +1,7 @@
 com/miniuber/notification/NotificationServiceApplication.class
+com/miniuber/notification/messaging/NotificationEventsListener.class
 com/miniuber/notification/dto/NotificationDTO.class
 com/miniuber/notification/service/NotificationService.class
 com/miniuber/notification/service/NotificationServiceImpl.class
 com/miniuber/notification/config/KafkaConfig.class
 com/miniuber/notification/controller/NotificationController.class
-com/miniuber/notification/messaging/NotificationListener.class
