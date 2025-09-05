@@ -104,3 +104,45 @@ One command 🚀:
 
 ```bash
 ./run-all.sh
+
+---
+```
+
+### 3. 🧪 Testing the Workflow
+
+**Create User**
+```bash
+curl -X POST http://localhost:8080/api/users \
+     -H "Content-Type: application/json" \
+     -d '{"name":"Alice","email":"alice@mail.com"}'
+```
+
+**Request Ride**
+
+```bash
+curl -X POST http://localhost:8080/api/rides \
+     -H "Authorization: Bearer <JWT>" \
+     -H "Content-Type: application/json" \
+     -d '{"userId":1,"startLocation":"A","endLocation":"B"}'
+```
+
+**Kafka Event Flow**
+
+```bash
+ride-service → matching-service → ride-service → payment-service → notification-service
+```
+
+**Complete Ride**
+
+```bash
+curl -X PATCH http://localhost:8080/api/rides/{id}/complete \
+     -H "Authorization: Bearer <JWT>"
+```
+
+# 🛠️ Troubleshooting
+
+- **Kafka UnknownHost** → use `localhost:29092` (host) vs `kafka:9092` (Docker)  
+- **JWT Weak Key** → use `Keys.secretKeyFor(SignatureAlgorithm.HS256)`  
+- **DB Connection Refused** → check Postgres container ports + `spring.datasource.url`  
+- **Prometheus scrape errors** → verify `/actuator/prometheus` endpoint  
+
