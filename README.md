@@ -8,6 +8,11 @@ A production-grade **event-driven microservices project** inspired by Uber, buil
 
 ![Architecture Diagram](resources/arch.png) <!-- you can export from draw.io -->
 
+## 🏗️ Kafka topics map
+
+![Architecture Diagram](resources/kafka-topic.png) <!-- you can export from draw.io -->
+
+
 ### Services
 - **API Gateway** (Spring Cloud Gateway + JWT Security + Resilience4j)
 - **Discovery Server** (Eureka Service Registry)
@@ -26,6 +31,12 @@ A production-grade **event-driven microservices project** inspired by Uber, buil
 4. Ride completed → published by **ride-service**
 5. Consumed by **payment-service** → payment created
 6. Consumed by **notification-service** → notification sent
+
+---
+
+## 🏗️ Component Diagram
+
+![Architecture Diagram](resources/comp-diag.png) <!-- you can export from draw.io -->
 
 ---
 
@@ -55,6 +66,18 @@ A production-grade **event-driven microservices project** inspired by Uber, buil
 
 ---
 
+## 🏗️ Deployment and ports
+
+![Architecture Diagram](resources/deploy-port.png) <!-- you can export from draw.io -->
+
+---
+
+
+## 🏗️ Sequence Diagram — Ride lifecycle
+
+![Architecture Diagram](resources/seq-diag.png) <!-- you can export from draw.io -->
+
+---
 ## ⚡ Run Locally
 
 ### 1. Start Infrastructure
