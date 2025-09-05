@@ -1,39 +1,86 @@
-# 🚖 Mini-Uber Backend
+# 🚖 Mini-Uber Backend (Microservices Architecture)
 
-A microservices-based backend implementation for a simplified Uber-like ride-hailing system.
+A production-grade **event-driven microservices project** inspired by Uber, built with **Spring Boot, Kafka, Eureka, Gateway, Zipkin, Prometheus/Grafana, Redis, and Postgres**.
 
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Architecture](#architecture)
-- [Services](#services)
-- [Databases](#databases)
-- [Ports](#ports)
-- [Setup & Running](#setup--running)
-- [Future Enhancements](#future-enhancements)
+👉 Designed to showcase **FAANG-level backend engineering skills**:  
+scalability, observability, resilience, and distributed tracing.
 
 ---
 
-## Overview
+## 🏗️ Architecture
 
-This project implements a ride-hailing backend system with the following key functionalities:
+![Architecture Diagram](docs/architecture.png) <!-- you can export from draw.io -->
 
-- Ride management (request, start, end)
-- Real-time driver tracking
-- Notifications
-- Matching riders with drivers
-- User management
+### Services
+- **API Gateway** (Spring Cloud Gateway + JWT Security + Resilience4j)
+- **Discovery Server** (Eureka Service Registry)
+- **User Service** (Postgres + JPA)
+- **Driver Service** (Postgres + JPA)
+- **Ride Service** (Postgres + Kafka producer/consumer)
+- **Matching Service** (Kafka consumer/producer for driver assignment)
+- **Payment Service** (Postgres + Kafka consumer/producer)
+- **Tracking Service** (Redis for live driver tracking)
+- **Notification Service** (Kafka consumer, logs notifications)
 
-The system is built using **Spring Boot**, **Redis**, **PostgreSQL**, and other supporting technologies.
+### Event Pipeline (Kafka)
+1. Ride requested → published by **ride-service**
+2. Consumed by **matching-service** → driver assigned
+3. Driver assignment consumed by **ride-service** → ride started
+4. Ride completed → published by **ride-service**
+5. Consumed by **payment-service** → payment created
+6. Consumed by **notification-service** → notification sent
 
 ---
 
-## Architecture
+## 🚀 Features
 
-- Microservices architecture for scalability and maintainability.
-- Each service has its own responsibilities and database where applicable.
-- Inter-service communication can be extended using **REST APIs** or **messaging queues** in the future.
-- Redis is used for real-time tracking and caching.
+✅ Microservices with service discovery & load balancing  
+✅ Secure Gateway with **JWT Authentication**  
+✅ **Kafka event-driven** communication between services  
+✅ **Distributed tracing** with Zipkin (traceId across HTTP + Kafka)  
+✅ **Metrics & monitoring** with Prometheus + Grafana  
+✅ **Resilience4j** Circuit Breakers & fallback in API Gateway  
+✅ **Redis caching** for driver tracking  
+✅ PostgreSQL persistence with JPA + Flyway migrations  
+✅ Centralized logging & observability
 
+---
+
+## 🛠️ Tech Stack
+
+- **Spring Boot 3**, **Spring Cloud**
+- **Postgres**, **Redis**
+- **Apache Kafka**
+- **Zipkin**, **Micrometer**, **Prometheus**, **Grafana**
+- **Resilience4j**
+- **Docker** (optional, can run locally)
+- **JUnit/Testcontainers** for integration tests
+
+---
+
+## ⚡ Run Locally
+
+### 1. Start Infrastructure
+
+Make sure you have:
+- Postgres running on:
+    - user-service → `5432`
+    - driver-service → `5433`
+    - ride-service → `5434`
+    - payment-service → `5435`
+- Redis on `localhost:6379`
+- Kafka broker on `localhost:29092`
+- Zipkin on `http://localhost:9411`
+- Prometheus on `http://localhost:9090`
+- Grafana on `http://localhost:3000`
+
+> These can be started with `docker-compose -f infra/docker-compose.yml up`.
+
+---
+
+### 2. Run All Services
+
+One command 🚀:
+
+```bash
+./run-all.sh
