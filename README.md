@@ -2,9 +2,6 @@
 
 A production-grade **event-driven microservices project** inspired by Uber, built with **Spring Boot, Kafka, Eureka, Gateway, Zipkin, Prometheus/Grafana, Redis, and Postgres**.
 
-👉 Designed to showcase **FAANG-level backend engineering skills**:  
-scalability, observability, resilience, and distributed tracing.
-
 ---
 
 ## 🏗️ Architecture
