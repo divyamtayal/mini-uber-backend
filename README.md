@@ -10,7 +10,7 @@ A production-grade **event-driven microservices project** inspired by Uber, buil
 
 ## 🏗️ Kafka topics map
 
-![Architecture Diagram](resources/kafka-topic.png) <!-- you can export from draw.io -->
+![Kafka Diagram](resources/kafka-topic.png) <!-- you can export from draw.io -->
 
 
 ### Services
@@ -36,7 +36,7 @@ A production-grade **event-driven microservices project** inspired by Uber, buil
 
 ## 🏗️ Component Diagram
 
-![Architecture Diagram](resources/comp-diag.png) <!-- you can export from draw.io -->
+![Component Diagram](resources/comp-diag.png) <!-- you can export from draw.io -->
 
 ---
 
@@ -68,14 +68,14 @@ A production-grade **event-driven microservices project** inspired by Uber, buil
 
 ## 🏗️ Deployment and ports
 
-![Architecture Diagram](resources/deploy-port.png) <!-- you can export from draw.io -->
+![Deployment Diagram](resources/deploy-port.png) <!-- you can export from draw.io -->
 
 ---
 
 
 ## 🏗️ Sequence Diagram — Ride lifecycle
 
-![Architecture Diagram](resources/seq-diag.png) <!-- you can export from draw.io -->
+![Sequence Diagram](resources/seq-diag.png) <!-- you can export from draw.io -->
 
 ---
 ## ⚡ Run Locally
