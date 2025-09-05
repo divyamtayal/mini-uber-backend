@@ -146,3 +146,24 @@ curl -X PATCH http://localhost:8080/api/rides/{id}/complete \
 - **DB Connection Refused** → check Postgres container ports + `spring.datasource.url`  
 - **Prometheus scrape errors** → verify `/actuator/prometheus` endpoint  
 
+## 📸 Screenshots
+
+### 🟦 Eureka — Service Registry
+Shows all services (user, driver, ride, payment, matching, tracking, notification) registered with discovery.
+
+![Eureka](resources/eureka.png)
+
+### 📊 Grafana — Observability Dashboard
+Custom dashboards for API latency, Kafka throughput, and JVM metrics.
+
+![Grafana](resources/grafana.png)
+
+### 📈 Prometheus — Metrics Source
+Scraping from all microservices via `/actuator/prometheus`.
+
+![Prometheus](resources/prom.png)
+
+### 🔎 Zipkin — Distributed Tracing
+End-to-end trace of a ride request across Gateway → Ride → Matching → Payment → Notification.
+
+![Zipkin](resources/zipkin.png)
