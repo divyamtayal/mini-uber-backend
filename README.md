@@ -6,7 +6,7 @@ A production-grade **event-driven microservices project** inspired by Uber, buil
 
 ## 🏗️ Architecture
 
-![Architecture Diagram](docs/architecture.png) <!-- you can export from draw.io -->
+![Architecture Diagram](resources/arch.png) <!-- you can export from draw.io -->
 
 ### Services
 - **API Gateway** (Spring Cloud Gateway + JWT Security + Resilience4j)
